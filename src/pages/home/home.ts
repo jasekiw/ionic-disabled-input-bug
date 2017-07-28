@@ -7,6 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  shouldDisable = true;
   constructor(public navCtrl: NavController) {
 
   }
