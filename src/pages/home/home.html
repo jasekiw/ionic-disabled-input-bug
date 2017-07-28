@@ -5,40 +5,26 @@
 </ion-header>
 
 <ion-content padding>
-<ion-card>
+  <ng-template [ngIf]="items">
+<ion-card *ngFor="let item of items; let g = index">
  <ion-card-header>
   <ion-icon name="ios-sunny-outline"></ion-icon>
+   {{ item.name }}
  </ion-card-header>
   <ion-card-content>
         <ion-list>
-          <ion-item>
+          <ion-item *ngFor="let subItem of item.subItems; let i = index;">
             <ion-label fixed class="custom-label">I AM</ion-label>
             <ion-input item-content
                               mode="md"
                               type="text"
                               placeholder="..."
-                              [disabled]="shouldDisable"
-                              autocomplete="false"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label fixed class="custom-label">I AM</ion-label>
-            <ion-input item-content
-                              mode="md"
-                              type="text"
-                              placeholder="..."
-                              [disabled]="shouldDisable"
-                              autocomplete="false"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label fixed class="custom-label">I AM</ion-label>
-            <ion-input item-content
-                              mode="md"
-                              type="text"
-                              placeholder="..."
-                              [disabled]="shouldDisable"
+                              [(ngModel)]="subItem.value"
+                              [disabled]="!subItem.enabled"
                               autocomplete="false"></ion-input>
           </ion-item>
         </ion-list>
       </ion-card-content>
   </ion-card>
+  </ng-template>
 </ion-content>
